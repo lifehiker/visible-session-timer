@@ -27,9 +27,13 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
+ENV DATABASE_URL="file:/data/app.db"
+ENV AUTH_SECRET="forge-app-default-secret-override-in-production"
+ENV NEXT_PUBLIC_APP_URL=""
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
+RUN mkdir -p /data && chown nextjs:nodejs /data
 
 COPY --from=builder /app/public ./public
 
