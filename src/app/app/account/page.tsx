@@ -1,11 +1,11 @@
-import { redirect } from "next/navigation";
 import Link from "next/link";
 import { auth } from "@/auth";
 import { db } from "@/lib/db";
 import { Button } from "@/components/ui/button";
+import { GoogleSignInButton } from "@/components/auth/google-sign-in-button";
 
 export const metadata = {
-  title: "Account \u2013 Visible Session Timer",
+  title: "Account – Visible Session Timer",
 };
 
 export default async function AccountPage({
@@ -16,7 +16,17 @@ export default async function AccountPage({
   const session = await auth();
 
   if (!session?.user?.id) {
-    redirect("/sign-in?callbackUrl=/app/account");
+    return (
+      <div className="flex min-h-[calc(100vh-3.5rem-5.5rem)] items-center justify-center px-4">
+        <div className="w-full max-w-sm text-center">
+          <h1 className="text-2xl font-bold tracking-tight mb-2">Account</h1>
+          <p className="text-sm text-muted-foreground mb-6">
+            Sign in to manage your account and Pro features.
+          </p>
+          <GoogleSignInButton callbackUrl="/app/account" className="w-full h-11" />
+        </div>
+      </div>
+    );
   }
 
   const { upgraded } = await searchParams;
@@ -35,7 +45,7 @@ export default async function AccountPage({
   });
 
   if (!user) {
-    redirect("/sign-in");
+    return null;
   }
 
   return (
@@ -97,7 +107,7 @@ export default async function AccountPage({
           {!user.isPro && (
             <form action="/api/stripe/checkout" method="POST">
               <Button type="submit" className="bg-white text-zinc-900 hover:bg-zinc-200 font-semibold">
-                Upgrade to Pro \u2014 $9
+                Upgrade to Pro — $9
               </Button>
             </form>
           )}

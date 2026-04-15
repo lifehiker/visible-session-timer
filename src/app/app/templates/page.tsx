@@ -1,19 +1,29 @@
-import { redirect } from "next/navigation";
 import Link from "next/link";
 import { auth } from "@/auth";
 import { db } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import { deleteTemplate } from "./actions";
+import { GoogleSignInButton } from "@/components/auth/google-sign-in-button";
 
 export const metadata = {
-  title: "My Templates \u2013 Visible Session Timer",
+  title: "My Templates – Visible Session Timer",
 };
 
 export default async function TemplatesPage() {
   const session = await auth();
 
   if (!session?.user?.id) {
-    redirect("/sign-in?callbackUrl=/app/templates");
+    return (
+      <div className="flex min-h-[calc(100vh-3.5rem-5.5rem)] items-center justify-center px-4">
+        <div className="w-full max-w-sm text-center">
+          <h1 className="text-2xl font-bold tracking-tight mb-2">My Templates</h1>
+          <p className="text-sm text-muted-foreground mb-6">
+            Sign in to access your saved timer templates.
+          </p>
+          <GoogleSignInButton callbackUrl="/app/templates" className="w-full h-11" />
+        </div>
+      </div>
+    );
   }
 
   const templates = await db.timerTemplate.findMany({
