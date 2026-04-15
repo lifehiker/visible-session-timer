@@ -1,7 +1,7 @@
 import { GoogleSignInButton } from "@/components/auth/google-sign-in-button";
 
 export const metadata = {
-  title: "Sign In \u2013 Visible Session Timer",
+  title: "Sign In - Visible Session Timer",
 };
 
 interface SignInPageProps {

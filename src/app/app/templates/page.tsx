@@ -6,7 +6,7 @@ import { deleteTemplate } from "./actions";
 import { GoogleSignInButton } from "@/components/auth/google-sign-in-button";
 
 export const metadata = {
-  title: "My Templates – Visible Session Timer",
+  title: "My Templates - Visible Session Timer",
 };
 
 export default async function TemplatesPage() {

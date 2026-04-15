@@ -5,7 +5,7 @@ import { ThemeProvider } from "next-themes";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Visible Session Timer – Full-Screen Visual Timer",
+  title: "Visible Session Timer - Full-Screen Visual Timer",
   description:
     "Free full-screen visual timer with large readable display, named segments, repeating intervals, and one-tap start. Works on projectors, laptops, and shared screens.",
 };
@@ -40,7 +40,7 @@ export default async function RootLayout({
           <main className="flex-1">{children}</main>
           <footer className="border-t border-border py-6 mt-auto">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-              <p>© {new Date().getFullYear()} Visible Session Timer</p>
+              <p>(c) {new Date().getFullYear()} Visible Session Timer</p>
               <div className="flex items-center gap-4">
                 <Link href="/pricing" className="hover:text-foreground transition-colors">Pricing</Link>
               </div>

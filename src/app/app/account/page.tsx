@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { GoogleSignInButton } from "@/components/auth/google-sign-in-button";
 
 export const metadata = {
-  title: "Account – Visible Session Timer",
+  title: "Account - Visible Session Timer",
 };
 
 export default async function AccountPage({
@@ -107,7 +107,7 @@ export default async function AccountPage({
           {!user.isPro && (
             <form action="/api/stripe/checkout" method="POST">
               <Button type="submit" className="bg-white text-zinc-900 hover:bg-zinc-200 font-semibold">
-                Upgrade to Pro — $9
+                Upgrade to Pro - $9
               </Button>
             </form>
           )}

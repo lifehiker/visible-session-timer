@@ -175,7 +175,7 @@ function TimerContent() {
   return (
     <div className={"relative min-h-screen flex flex-col select-none transition-colors duration-150 " + (flashing ? "bg-white" : "bg-black")}>
       <div className="absolute top-0 left-0 right-0 flex items-center justify-between px-6 py-4 z-10">
-        <Link href="/" className="text-white/30 hover:text-white/70 text-sm font-medium transition-colors">← Back</Link>
+        <Link href="/" className="text-white/30 hover:text-white/70 text-sm font-medium transition-colors">Back</Link>
         <div className="flex items-center gap-3">
           <button onClick={handleShare} className="text-white/30 hover:text-white/70 transition-colors p-2 rounded-lg hover:bg-white/10" title="Share link">
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
@@ -231,7 +231,7 @@ function TimerContent() {
 
       {showSettings && <SettingsPanel config={config} onApply={handleApplyConfig} onClose={() => setShowSettings(false)} />}
       {showShare && <ShareToast onDone={() => setShowShare(false)} />}
-      {!running && !finished && elapsed === 0 && <div className="absolute bottom-3 left-0 right-0 text-center text-white/15 text-xs">Space to start · R to reset · F for fullscreen</div>}
+      {!running && !finished && elapsed === 0 && <div className="absolute bottom-3 left-0 right-0 text-center text-white/15 text-xs">Space to start | R to reset | F for fullscreen</div>}
     </div>
   );
 }
