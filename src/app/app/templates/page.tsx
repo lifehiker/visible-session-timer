@@ -30,6 +30,7 @@ export default async function TemplatesPage() {
     where: { userId: session.user.id },
     orderBy: { updatedAt: "desc" },
   });
+  type Template = (typeof templates)[number];
 
   const isPro = (session.user as { isPro?: boolean }).isPro ?? false;
 
@@ -71,7 +72,7 @@ export default async function TemplatesPage() {
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {templates.map((template) => (
+          {templates.map((template: Template) => (
             <div
               key={template.id}
               className="rounded-xl border border-zinc-700 bg-zinc-900 p-5 flex flex-col gap-4"

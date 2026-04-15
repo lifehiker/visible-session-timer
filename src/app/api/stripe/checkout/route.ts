@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 
-export async function POST(req: NextRequest) {
+export async function POST() {
   if (!process.env.STRIPE_SECRET_KEY) {
     return NextResponse.json(
       { error: "Stripe is not configured." },

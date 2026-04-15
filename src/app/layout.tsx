@@ -1,15 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
-import { auth } from "@/auth";
-import { GoogleSignInButton } from "@/components/auth/google-sign-in-button";
-import { SignOutButton } from "@/components/auth/sign-out-button";
-
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
-const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Visible Session Timer – Full-Screen Visual Timer",
@@ -22,14 +15,8 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await auth();
-
   return (
-    <html
-      lang="en"
-      className={geistSans.variable + " " + geistMono.variable + " h-full antialiased"}
-      suppressHydrationWarning
-    >
+    <html lang="en" className="h-full antialiased" suppressHydrationWarning>
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <header className="border-b border-border bg-background/80 backdrop-blur-sm sticky top-0 z-50">
@@ -44,16 +31,9 @@ export default async function RootLayout({
                 <Link href="/pricing" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                   Pricing
                 </Link>
-                {session?.user ? (
-                  <div className="flex items-center gap-3">
-                    <Link href="/app/templates" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                      My Templates
-                    </Link>
-                    <SignOutButton />
-                  </div>
-                ) : (
-                  <GoogleSignInButton callbackUrl="/" className="h-8 text-sm px-3" />
-                )}
+                <Link href="/sign-in" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  Sign In
+                </Link>
               </nav>
             </div>
           </header>
