@@ -45,7 +45,17 @@ export default async function AccountPage({
   });
 
   if (!user) {
-    return null;
+    return (
+      <div className="flex min-h-[calc(100vh-3.5rem-5.5rem)] items-center justify-center px-4">
+        <div className="w-full max-w-sm text-center">
+          <h1 className="text-2xl font-bold tracking-tight mb-2">Account</h1>
+          <p className="text-sm text-muted-foreground mb-6">
+            Sign in to manage your account and Pro features.
+          </p>
+          <GoogleSignInButton callbackUrl="/app/account" className="w-full h-11" />
+        </div>
+      </div>
+    );
   }
 
   return (
