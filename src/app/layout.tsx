@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     "Free full-screen visual timer with large readable display, named segments, repeating intervals, and one-tap start. Works on projectors, laptops, and shared screens.",
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
