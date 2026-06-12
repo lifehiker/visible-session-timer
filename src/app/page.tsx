@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
+export const dynamic = "force-dynamic";
+
 export default function HomePage() {
   return (
     <div className="flex flex-col items-center justify-center min-h-[calc(100vh-3.5rem-5.5rem)] px-4">
