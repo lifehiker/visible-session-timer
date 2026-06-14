@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { deleteTemplate } from "./actions";
 import { GoogleSignInButton } from "@/components/auth/google-sign-in-button";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "My Templates - Visible Session Timer",
 };
